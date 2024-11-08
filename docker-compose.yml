@@ -1,0 +1,33 @@
+version: '3.8'
+
+services:
+  web:
+    image: php:8.1-apache
+    container_name: lamp_web
+    ports:
+      - "8080:80"  # Expose Apache on port 8080
+    volumes:
+      - ./www/html:/var/www/html  # Map the project directory to the container's web root
+      - ./php-config/php.ini:/usr/local/etc/php/php.ini # Optional: Custom PHP configuration
+    environment:
+      - PHP_EXTENSION=pdo_mysql
+    depends_on:
+      - db
+    # Install additional packages on the PHP image
+    build:
+      context: .
+      dockerfile: Dockerfile
+
+  db:
+    image: mysql:8.0
+    container_name: lamp_db
+    environment:
+      MYSQL_ROOT_PASSWORD: root_password
+      MYSQL_DATABASE: my_database
+      MYSQL_USER: user
+      MYSQL_PASSWORD: user_password
+    volumes:
+      - db_data:/var/lib/mysql  # Persistent storage for MySQL data
+
+volumes:
+  db_data:  # Volume for MySQL persistence
