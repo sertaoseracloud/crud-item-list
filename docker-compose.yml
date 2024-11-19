@@ -27,7 +27,7 @@ services:
       MYSQL_USER: user
       MYSQL_PASSWORD: user_password
     volumes:
-      - db_data:/var/lib/mysql  # Persistent storage for MySQL data
+      - ./init-db.sql:/docker-entrypoint-initdb.d/init-db.sql
 
 volumes:
   db_data:  # Volume for MySQL persistence
