@@ -61,8 +61,8 @@ foreach ($tortas as $row) {
     <h2>PDV - Empresa de Tortas</h2>
 </div>
 
-<div class="w3-container w3-card">
-    <table class="w3-table-all w3-hoverable">
+
+    <table class="w3-table-all w3-hoverable w3-container w3-card">
         <thead>
             <tr>
                 <th>Nome</th>
@@ -99,7 +99,7 @@ foreach ($tortas as $row) {
             <?php endforeach; ?>
         </tbody>
     </table>
-</div>
+
 
 <!-- Exibir Total -->
 <div class="w3-container w3-card w3-margin-top">
